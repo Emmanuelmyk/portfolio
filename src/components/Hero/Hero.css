@@ -6,12 +6,16 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  padding-top: 80px; /* Account for fixed navbar */
 }
 
 .hero-content {
   text-align: center;
   z-index: 1;
   animation: fadeInUp 1s ease;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero-greeting {
@@ -33,6 +37,7 @@
   background-clip: text;
   opacity: 0;
   animation: fadeInUp 0.8s ease 0.4s forwards;
+  line-height: 1.2;
 }
 
 .hero-role {
@@ -41,6 +46,7 @@
   margin-bottom: 2rem;
   opacity: 0;
   animation: fadeInUp 0.8s ease 0.6s forwards;
+  font-weight: 500;
 }
 
 .hero-intro {
@@ -76,6 +82,10 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding-top: 100px;
+  }
+
   .hero-name {
     font-size: 2.5rem;
   }
@@ -85,6 +95,11 @@
   }
 
   .hero-intro {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 0.8rem 2rem;
     font-size: 1rem;
   }
 }
