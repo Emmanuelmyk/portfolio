@@ -14,7 +14,7 @@ const Hero = () => {
     <section id="home" className="hero">
       <div className="container hero-content">
         <p className="hero-greeting">Hello, I'm</p>
-        <h1 className="hero-name">Alex Johnson</h1>
+        <h1 className="hero-name">Nuel Mbah</h1>
         <p className="hero-role">Software Developer – Web & Mobile</p>
         <p className="hero-intro">
           Crafting beautiful, responsive applications with modern technologies.
