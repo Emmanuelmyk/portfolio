@@ -1,48 +1,54 @@
+/* src/components/Skills/Skills.css */
 .skills {
-  /* padding: 8rem 0; */
+  padding: 0;
+  margin: 0;
   background: var(--bg-white);
+  min-height: auto; /* override global section min-height */
 }
 
 .section-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   color: var(--text-dark);
 }
 
 .skills-slider {
   overflow: hidden;
   position: relative;
-  padding: 2rem 0;
+  padding: 0;
   width: 100%;
 }
 
 .skills-track {
   display: flex;
-  gap: 3rem;
+  gap: 0.75rem;
   animation: scroll 30s linear infinite;
   width: max-content;
-}
-
-.skills-track:hover {
-  animation-play-state: paused;
+  padding: 1rem 0;
 }
 
 .skill-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  min-width: 50px;
-  padding: 1rem;
-  /* border-radius: 20px; */
-  transition: all 0.3s ease;
+  gap: 0.5rem;
+  min-width: 120px;
+  padding: 0.75rem;
+  background: var(--bg-white);
+  border-radius: 12px;
+  transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
+.skill-item:hover {
+  /* transform: translateY(-6px); */
+  box-shadow: var(--shadow);
+}
+
 .skill-icon {
-  font-size: 3rem;
+  font-size: 2.2rem;
 }
 
 .skill-name {
@@ -51,30 +57,24 @@
   white-space: nowrap;
 }
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
+/* Keep the scrolling behavior but tighten spacing on small screens */
 @media (max-width: 768px) {
   .section-title {
-    font-size: 2rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
   }
 
   .skills-track {
-    gap: 2rem;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
   }
 
   .skill-item {
-    min-width: 120px;
-    padding: 1.5rem;
+    min-width: 100px;
+    padding: 0.6rem;
   }
 
   .skill-icon {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 }
