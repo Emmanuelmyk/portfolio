@@ -1,0 +1,327 @@
+import React, { useState } from "react";
+// import "../styles/App.css";
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log("Form submitted:", formData);
+    alert("Thank you for your message! I'll get back to you soon.");
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  const socialLinks = [
+    { name: "GitHub", icon: "🐙", url: "https://github.com" },
+    { name: "LinkedIn", icon: "💼", url: "https://linkedin.com" },
+    { name: "Twitter", icon: "🐦", url: "https://twitter.com" },
+    { name: "Email", icon: "📧", url: "mailto:hello@example.com" },
+  ];
+
+  return (
+    <section id="contact" className="contact-section">
+      <div className="container">
+        <h2 className="section-title">Get In Touch</h2>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "60px",
+            alignItems: "start",
+          }}
+        >
+          <div className="fade-in-up">
+            <form
+              onSubmit={handleSubmit}
+              style={{
+                background: "white",
+                padding: "40px",
+                borderRadius: "20px",
+                boxShadow: "0 20px 50px rgba(0, 0, 0, 0.08)",
+              }}
+            >
+              <div style={{ marginBottom: "25px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "8px",
+                    fontWeight: "600",
+                    color: "var(--dark)",
+                  }}
+                >
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "15px",
+                    border: "2px solid var(--gray-light)",
+                    borderRadius: "10px",
+                    fontSize: "1rem",
+                    transition: "all 0.3s ease",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "var(--primary)";
+                    e.target.style.boxShadow =
+                      "0 0 0 3px rgba(99, 102, 241, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "var(--gray-light)";
+                    e.target.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: "25px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "8px",
+                    fontWeight: "600",
+                    color: "var(--dark)",
+                  }}
+                >
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "15px",
+                    border: "2px solid var(--gray-light)",
+                    borderRadius: "10px",
+                    fontSize: "1rem",
+                    transition: "all 0.3s ease",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "var(--primary)";
+                    e.target.style.boxShadow =
+                      "0 0 0 3px rgba(99, 102, 241, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "var(--gray-light)";
+                    e.target.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: "30px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "8px",
+                    fontWeight: "600",
+                    color: "var(--dark)",
+                  }}
+                >
+                  Your Message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="5"
+                  style={{
+                    width: "100%",
+                    padding: "15px",
+                    border: "2px solid var(--gray-light)",
+                    borderRadius: "10px",
+                    fontSize: "1rem",
+                    resize: "vertical",
+                    transition: "all 0.3s ease",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "var(--primary)";
+                    e.target.style.boxShadow =
+                      "0 0 0 3px rgba(99, 102, 241, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "var(--gray-light)";
+                    e.target.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn-primary"
+                style={{ width: "100%" }}
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <div className="fade-in-up delay-1">
+            <div
+              style={{
+                background: "var(--gradient-dark)",
+                color: "white",
+                padding: "40px",
+                borderRadius: "20px",
+                height: "100%",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1.75rem",
+                  fontWeight: "700",
+                  marginBottom: "30px",
+                }}
+              >
+                Let's build something amazing together
+              </h3>
+
+              <div style={{ marginBottom: "40px" }}>
+                <p
+                  style={{
+                    fontSize: "1.1rem",
+                    opacity: 0.9,
+                    lineHeight: "1.8",
+                    marginBottom: "30px",
+                  }}
+                >
+                  I'm currently available for freelance projects and full-time
+                  opportunities. Feel free to reach out if you want to discuss
+                  potential collaboration!
+                </p>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "15px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      background: "rgba(255, 255, 255, 0.1)",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "1.5rem",
+                    }}
+                  >
+                    📍
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: "600" }}>Location</div>
+                    <div style={{ opacity: 0.8 }}>San Francisco, CA</div>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "15px",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      background: "rgba(255, 255, 255, 0.1)",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "1.5rem",
+                    }}
+                  >
+                    ✉️
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: "600" }}>Email</div>
+                    <div style={{ opacity: 0.8 }}>hello@alexcarter.dev</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4
+                  style={{
+                    fontSize: "1.25rem",
+                    fontWeight: "600",
+                    marginBottom: "20px",
+                  }}
+                >
+                  Connect with me
+                </h4>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "15px",
+                  }}
+                >
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        background: "rgba(255, 255, 255, 0.1)",
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "1.5rem",
+                        textDecoration: "none",
+                        color: "white",
+                        transition: "all 0.3s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background =
+                          "rgba(255, 255, 255, 0.2)";
+                        e.currentTarget.style.transform = "translateY(-5px)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background =
+                          "rgba(255, 255, 255, 0.1)";
+                        e.currentTarget.style.transform = "translateY(0)";
+                      }}
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
