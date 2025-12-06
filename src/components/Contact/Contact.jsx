@@ -1,79 +1,89 @@
 // ==================== src/components/Contact/Contact.jsx ====================
-import React, { useState } from "react";
+import React from "react";
 import "./Contact.css";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const socialLinks = [
+    {
+      icon: "💼",
+      label: "LinkedIn",
+      url: "https://linkedin.com/in/yourprofile",
+    },
+    { icon: "🐙", label: "GitHub", url: "https://github.com/yourusername" },
+    { icon: "🐦", label: "Twitter", url: "https://twitter.com/yourhandle" },
+    { icon: "📧", label: "Email", url: "mailto:your.email@example.com" },
+  ];
 
-  const handleSubmit = () => {
-    if (formData.name && formData.email && formData.message) {
-      console.log("Form submitted:", formData);
-      alert("Thank you for your message! I'll get back to you soon.");
-      setFormData({ name: "", email: "", message: "" });
-    } else {
-      alert("Please fill in all fields");
-    }
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const contactInfo = [
+    { icon: "📍", title: "Location", text: "Based in San Francisco, CA" },
+    { icon: "⏰", title: "Availability", text: "Open to new opportunities" },
+    { icon: "💬", title: "Response Time", text: "Typically within 24 hours" },
+  ];
 
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
+        <div className="contact-header">
+          <h2 className="section-title">Let's Connect</h2>
+          <p className="contact-subtitle">
+            Feel free to reach out through any of these platforms. I'm always
+            open to discussing new opportunities, creative projects, or just
+            having a friendly chat.
+          </p>
+        </div>
+
         <div className="contact-content">
-          <div className="contact-form">
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
+          {/* Social Links Section */}
+          <div className="social-section">
+            <h3 className="social-title">Find Me Online</h3>
+            <div className="social-grid">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.url}
+                  className="social-card"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                >
+                  <div className="social-icon">{link.icon}</div>
+                  <div className="social-info">
+                    <span className="social-label">{link.label}</span>
+                    <span className="social-handle">
+                      {link.url.replace(/^https?:\/\/(www\.)?/, "")}
+                    </span>
+                  </div>
+                  <div className="social-arrow">→</div>
+                </a>
+              ))}
             </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-              />
-            </div>
-            <button onClick={handleSubmit} className="submit-button">
-              Send Message
-            </button>
           </div>
-          <div className="social-links">
-            <a href="#" className="social-link">
-              💼
-            </a>
-            <a href="#" className="social-link">
-              🐙
-            </a>
-            <a href="#" className="social-link">
-              🐦
-            </a>
-            <a href="#" className="social-link">
-              📧
+
+          {/* Contact Info Section */}
+          <div className="info-section">
+            <h3 className="info-title">Quick Info</h3>
+            <div className="info-grid">
+              {contactInfo.map((info, index) => (
+                <div key={index} className="info-card">
+                  <div className="info-icon">{info.icon}</div>
+                  <div className="info-content">
+                    <h4>{info.title}</h4>
+                    <p>{info.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="contact-cta">
+            <p className="cta-text">
+              Prefer a more direct approach? <br />
+              Shoot me an email and I'll get back to you as soon as possible.
+            </p>
+            <a href="mailto:your.email@example.com" className="email-button">
+              <span className="email-icon">✉️</span>
+              Send an Email
             </a>
           </div>
         </div>

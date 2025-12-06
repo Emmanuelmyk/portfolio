@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background: var(--bg-white);
+  /* background: var(--bg-white); */
   backdrop-filter: blur(10px);
   z-index: 1000;
   padding: 1.5rem 0;

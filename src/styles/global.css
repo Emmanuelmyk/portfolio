@@ -26,6 +26,15 @@ body {
   overflow-x: hidden;
   background: var(--bg-white);
   line-height: 1.6;
+
+  /* More visible dot pattern */
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(39, 42, 116, 0.129) 1.5px,
+    transparent 0
+  );
+  background-size: 35px 35px;
+  background-position: center;
 }
 
 /* Add padding to account for fixed navbar */
@@ -105,5 +114,10 @@ button {
   section {
     min-height: auto;
     padding: 4rem 0;
+  }
+
+  /* Optional: Make dots less dense on mobile for better performance */
+  body {
+    background-size: 50px 50px;
   }
 }
