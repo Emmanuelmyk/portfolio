@@ -45,7 +45,7 @@ const Navbar = () => {
     <>
       <nav className={`navbar ${scrolled ? "scrolled" : ""}`} ref={navRef}>
         <div className="container nav-content">
-          <div className="logo">Portfolio</div>
+          <div className="logo">Nuel Mbah</div>
 
           <button
             className={`nav-toggle ${menuOpen ? "open" : ""}`}

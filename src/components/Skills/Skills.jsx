@@ -19,13 +19,14 @@ const Skills = () => {
   return (
     <section id="skills" className="skills">
       <div className="container">
-        <h2 className="section-title">Skills & Technologies</h2>
         <div className="skills-slider">
           <div className="skills-track">
             {doubledSkills.map((skill, index) => (
               <div key={index} className="skill-item">
-                <div className="skill-icon">{skill.icon}</div>
-                <div className="skill-name">{skill.name}</div>
+                <div className="skill-name">
+                  {skill.icon}
+                  {skill.name}
+                </div>
               </div>
             ))}
           </div>
