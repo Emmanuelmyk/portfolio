@@ -5,6 +5,7 @@ import "./Projects.css";
 const Projects = () => {
   const [visibleProjects, setVisibleProjects] = useState([]);
   const projectRefs = useRef([]);
+  const videoRefs = useRef([]);
 
   const projects = [
     {
@@ -49,10 +50,23 @@ const Projects = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = projectRefs.current.indexOf(entry.target);
-            if (index !== -1 && !visibleProjects.includes(index)) {
-              setVisibleProjects((prev) => [...prev, index]);
+          const index = projectRefs.current.indexOf(entry.target);
+          if (index !== -1) {
+            if (entry.isIntersecting) {
+              if (!visibleProjects.includes(index)) {
+                setVisibleProjects((prev) => [...prev, index]);
+              }
+              // Play video when visible
+              if (videoRefs.current[index]) {
+                videoRefs.current[index].play().catch((err) => {
+                  console.log("Video play failed:", err);
+                });
+              }
+            } else {
+              // Pause video when not visible
+              if (videoRefs.current[index]) {
+                videoRefs.current[index].pause();
+              }
             }
           }
         });
@@ -82,11 +96,13 @@ const Projects = () => {
             >
               <div className="project-image">
                 <video
+                  ref={(el) => (videoRefs.current[index] = el)}
                   src="/assets/site record.mp4"
-                  autoPlay
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  crossOrigin="anonymous"
                 />
               </div>
               <div className="project-content">
