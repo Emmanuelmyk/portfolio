@@ -11,7 +11,7 @@ root.render(
   </React.StrictMode>
 );
 
-// Floating dot: smooth motion, button highlighting, no scroll scaling
+// Floating dot: smooth orbital motion when idle, button highlighting
 let dotX = window.innerWidth * 0.1;
 let dotY = window.innerHeight * 0.2;
 let targetX = dotX;
@@ -20,9 +20,8 @@ let isHighlighting = false;
 let nearestButton = null;
 let prevButton = null;
 
-// keep a modest movement center when idle
-targetX = dotX;
-targetY = dotY;
+// Orbital motion: angle in radians (progresses smoothly over time)
+let orbitAngle = 0;
 
 window.addEventListener("resize", () => {
   // keep dot inside viewport
@@ -79,13 +78,22 @@ function animateDot() {
     dotX += (targetX - dotX) * 0.16;
     dotY += (targetY - dotY) * 0.16;
   } else {
-    // gentle random wander with small amplitude for smooth motion
-    targetX += (Math.random() - 0.5) * 40;
-    targetY += (Math.random() - 0.5) * 30;
-    targetX = Math.max(8, Math.min(window.innerWidth - 8, targetX));
-    targetY = Math.max(8, Math.min(window.innerHeight - 8, targetY));
-    dotX += (targetX - dotX) * 0.06;
-    dotY += (targetY - dotY) * 0.06;
+    // smooth orbital motion around the viewport center
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const radiusX = window.innerWidth * 0.35; // elliptical orbit width
+    const radiusY = window.innerHeight * 0.3; // elliptical orbit height
+
+    // increment angle smoothly for continuous orbital motion
+    orbitAngle += 0.008; // adjust speed: higher = faster orbit
+
+    // calculate orbital target position (elliptical path)
+    targetX = centerX + Math.cos(orbitAngle) * radiusX;
+    targetY = centerY + Math.sin(orbitAngle * 0.8) * radiusY; // slightly different frequency for varied path
+
+    // smooth interpolation toward orbital position
+    dotX += (targetX - dotX) * 0.04;
+    dotY += (targetY - dotY) * 0.04;
   }
 
   // update CSS vars used by body::after
