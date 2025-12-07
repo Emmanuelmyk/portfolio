@@ -7,11 +7,11 @@ const Contact = () => {
     {
       icon: "💼",
       label: "LinkedIn",
-      url: "https://linkedin.com/in/yourprofile",
+      url: "https://linkedin.com/in/emmanuelmbah",
     },
-    { icon: "🐙", label: "GitHub", url: "https://github.com/yourusername" },
-    { icon: "🐦", label: "Twitter", url: "https://twitter.com/yourhandle" },
-    { icon: "📧", label: "Email", url: "mailto:your.email@example.com" },
+    { icon: "🐙", label: "GitHub", url: "https://github.com/emmanuelmbah" },
+    { icon: "🐦", label: "Twitter", url: "https://twitter.com/emmanuelx" },
+    { icon: "📧", label: "Email", url: "emmanuelmbah91@gmail.com" },
   ];
 
   const contactInfo = [
@@ -60,7 +60,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Info Section */}
-          <div className="info-section">
+          {/* <div className="info-section">
             <h3 className="info-title">Quick Info</h3>
             <div className="info-grid">
               {contactInfo.map((info, index) => (
@@ -73,7 +73,7 @@ const Contact = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* CTA Section */}
           <div className="contact-cta">
