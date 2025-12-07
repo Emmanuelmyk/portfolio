@@ -1,4 +1,4 @@
-// ==================== src/components/About/About.jsx ====================
+// src/components/About/About.jsx
 import React from "react";
 import "./About.css";
 
@@ -7,7 +7,9 @@ const About = () => {
     <section id="about" className="about">
       <div className="container">
         <div className="about-content">
-          <div className="about-image">👨‍💻</div>
+          <div className="about-image">
+            <img src="/assets/MyPassport.jpg" alt="Profile" />
+          </div>
           <div className="about-text">
             <h2>About Me</h2>
             <p>
