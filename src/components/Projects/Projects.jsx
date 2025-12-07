@@ -1,4 +1,4 @@
-// ==================== src/components/Projects/Projects.jsx ====================
+// src/components/Projects/Projects.jsx
 import React, { useState, useEffect, useRef } from "react";
 import "./Projects.css";
 
@@ -12,42 +12,36 @@ const Projects = () => {
       title: "E-Commerce Platform",
       description:
         "A full-stack e-commerce solution with real-time inventory management, secure payment processing, and an intuitive admin dashboard. Built with React and Firebase.",
-      icon: "🛍️",
     },
     {
       type: "Mobile",
       title: "Fitness Tracker App",
       description:
         "Cross-platform mobile app for tracking workouts and nutrition. Features real-time data sync, social sharing, and personalized workout plans. Built with Flutter.",
-      icon: "💪",
     },
     {
       type: "Web",
       title: "Project Management Tool",
       description:
         "Collaborative project management platform with task tracking, team communication, and analytics. Real-time updates powered by Supabase.",
-      icon: "📊",
     },
     {
       type: "Mobile",
       title: "Travel Companion",
       description:
         "Mobile app for discovering and planning trips with AI-powered recommendations, offline maps, and budget tracking. Built with Flutter and Firebase.",
-      icon: "✈️",
     },
     {
       type: "Web",
       title: "Real-Time Chat Platform",
       description:
         "Modern messaging platform with video calls, file sharing, and end-to-end encryption. Features group chats and custom emoji support.",
-      icon: "💬",
     },
     {
       type: "Mobile",
       title: "Language Learning App",
       description:
         "Interactive language learning app with gamification, speech recognition, and personalized learning paths. Supports 20+ languages.",
-      icon: "🌍",
     },
   ];
 
@@ -86,7 +80,15 @@ const Projects = () => {
                 visibleProjects.includes(index) ? "visible" : ""
               }`}
             >
-              <div className="project-image">{project.icon}</div>
+              <div className="project-image">
+                <video
+                  src="/assets/site record.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              </div>
               <div className="project-content">
                 <span className="project-type">{project.type}</span>
                 <h3>{project.title}</h3>
