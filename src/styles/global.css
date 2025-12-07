@@ -13,6 +13,10 @@
   --bg-light: #f8fafc;
   --shadow: 0 20px 60px rgba(99, 102, 241, 0.1);
   --shadow-hover: 0 30px 80px rgba(99, 102, 241, 0.15);
+  --dot-scale: 1;
+  --dot-x: 10vw;
+  --dot-y: 20vh;
+  --dot-highlight: 0;
 }
 
 html {
@@ -26,15 +30,6 @@ body {
   overflow-x: hidden;
   background: var(--bg-white);
   line-height: 1.6;
-
-  /* More visible dot pattern */
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    rgba(39, 42, 116, 0.181) 1.5px,
-    transparent 0
-  );
-  background-size: 35px 35px;
-  background-position: center;
 }
 
 /* Add padding to account for fixed navbar */
@@ -101,6 +96,40 @@ button {
   outline: none;
 }
 
+/* Floating blue dot - smaller and more visible */
+body::after {
+  content: "";
+  position: fixed;
+  left: var(--dot-x);
+  top: var(--dot-y);
+  transform: translate(-50%, -50%) scale(calc(1 + var(--dot-highlight) * 0.25));
+  width: 12px;
+  height: 12px;
+  background: #3b82f6; /* solid blue */
+  border-radius: 50%;
+  z-index: 999;
+  pointer-events: none;
+  will-change: left, top, transform, box-shadow;
+  transition: transform 160ms linear, box-shadow 160ms linear;
+  box-shadow: 0 0 calc(6px * var(--dot-highlight))
+    rgba(59, 130, 246, calc(0.35 * var(--dot-highlight)));
+}
+
+/* slightly smaller on very small screens */
+@media (max-width: 480px) {
+  body::after {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* ensure dot variables exist if not already defined */
+html {
+  --dot-x: var(--dot-x, 10vw);
+  --dot-y: var(--dot-y, 20vh);
+  --dot-highlight: var(--dot-highlight, 0);
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .container {
@@ -116,8 +145,68 @@ button {
     padding: 4rem 0;
   }
 
-  /* Optional: Make dots less dense on mobile for better performance */
-  body {
-    background-size: 50px 50px;
+  body::after {
+    width: 30px;
+    height: 30px;
   }
+}
+
+/* Subtle symmetric dot background */
+:root {
+  --dot-color: rgba(16, 24, 40, 0.035);
+  --dot-size: 1px;
+  --dot-gap: 10px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle,
+    var(--dot-color) var(--dot-size),
+    transparent calc(var(--dot-size) + 0.5px)
+  );
+  background-size: var(--dot-gap) var(--dot-gap);
+  background-position: center center;
+  opacity: 1;
+  will-change: transform;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dot-triggered hover styles: mimic the hover effects when dot touches the button */
+button.dot-hover,
+button.dot-hover:focus {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  background: var(--primary-dark);
+  color: white;
+}
+
+.cta-button.dot-hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+  background: var(--primary-dark);
+  color: white;
+}
+
+a.project-button.dot-hover {
+  background: var(--primary);
+  color: white;
+  transform: translateX(5px);
+  box-shadow: var(--shadow);
+}
+
+/* Smooth transitions for the class changes (some elements already have transitions) */
+button,
+a.project-button,
+.cta-button {
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background-color 0.25s ease, color 0.25s ease;
 }

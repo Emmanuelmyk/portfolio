@@ -1,11 +1,10 @@
-/* src/components/Projects/Projects.css */
 .projects {
   padding: 8rem 0;
 }
 
 .section-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 4rem;
   color: var(--text-dark);
@@ -65,7 +64,7 @@
 }
 
 .project-content h3 {
-  font-size: 2rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
   color: var(--text-dark);
 }
