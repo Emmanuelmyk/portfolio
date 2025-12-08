@@ -38,7 +38,7 @@ const Projects = () => {
     },
     {
       type: "Web",
-      title: "Real-Time Chat Platform",
+      title: "Real-Time Chat",
       description:
         "Modern messaging platform with video calls, file sharing, and end-to-end encryption. Features group chats and custom emoji support.",
       video: "/assets/site record.mp4",
