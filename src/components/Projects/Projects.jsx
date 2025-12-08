@@ -13,36 +13,42 @@ const Projects = () => {
       title: "E-Commerce Platform",
       description:
         "A full-stack e-commerce solution with real-time inventory management, secure payment processing, and an intuitive admin dashboard. Built with React and Firebase.",
+      video: "/assets/site record.mp4",
     },
     {
       type: "Mobile",
       title: "Fitness Tracker App",
       description:
         "Cross-platform mobile app for tracking workouts and nutrition. Features real-time data sync, social sharing, and personalized workout plans. Built with Flutter.",
+      video: "/assets/mobile.mp4",
     },
     {
       type: "Web",
       title: "Project Management Tool",
       description:
         "Collaborative project management platform with task tracking, team communication, and analytics. Real-time updates powered by Supabase.",
+      video: "/assets/site record.mp4",
     },
     {
-      type: "Mobile",
+      type: "Web",
       title: "Travel Companion",
       description:
         "Mobile app for discovering and planning trips with AI-powered recommendations, offline maps, and budget tracking. Built with Flutter and Firebase.",
+      video: "/assets/edofindvd.mp4",
     },
     {
       type: "Web",
       title: "Real-Time Chat Platform",
       description:
         "Modern messaging platform with video calls, file sharing, and end-to-end encryption. Features group chats and custom emoji support.",
+      video: "/assets/site record.mp4",
     },
     {
-      type: "Mobile",
+      type: "Web",
       title: "Language Learning App",
       description:
         "Interactive language learning app with gamification, speech recognition, and personalized learning paths. Supports 20+ languages.",
+      video: "/assets/edofindvd.mp4",
     },
   ];
 
@@ -56,14 +62,12 @@ const Projects = () => {
               if (!visibleProjects.includes(index)) {
                 setVisibleProjects((prev) => [...prev, index]);
               }
-              // Play video when visible
               if (videoRefs.current[index]) {
                 videoRefs.current[index].play().catch((err) => {
                   console.log("Video play failed:", err);
                 });
               }
             } else {
-              // Pause video when not visible
               if (videoRefs.current[index]) {
                 videoRefs.current[index].pause();
               }
@@ -94,10 +98,14 @@ const Projects = () => {
                 visibleProjects.includes(index) ? "visible" : ""
               }`}
             >
-              <div className="project-image">
+              <div
+                className={`project-image ${
+                  project.type === "Mobile" ? "mobile-video" : ""
+                }`}
+              >
                 <video
                   ref={(el) => (videoRefs.current[index] = el)}
-                  src="/assets/site record.mp4"
+                  src={project.video}
                   loop
                   muted
                   playsInline
