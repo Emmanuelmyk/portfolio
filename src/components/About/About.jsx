@@ -35,3 +35,49 @@ const About = () => {
 };
 
 export default About;
+
+// import React, { useRef } from "react";
+// import { motion, useScroll, useTransform } from "framer-motion";
+// import "./About.css";
+
+// const About = () => {
+//   const targetRef = useRef(null);
+
+//   const { scrollYProgress } = useScroll({
+//     target: targetRef,
+//     offset: ["start end", "end start"],
+//   });
+
+//   const rotateY = useTransform(scrollYProgress, [0.3, 0.7], [0, 180]);
+
+//   return (
+//     <section id="about" className="about" ref={targetRef}>
+//       <div className="container">
+//         <div className="about-content">
+//           <div className="about-image-wrapper">
+//             <motion.div
+//               className="about-image"
+//               style={{ rotateY }}
+//             >
+//               <div className="face front">
+//                 <img src="/assets/MyPassport.jpg" alt="Profile Front" />
+//               </div>
+
+//               <div className="face back">
+//                 <img src="/assets/MyPassport.jpg" alt="Profile Back" />
+//               </div>
+//             </motion.div>
+//           </div>
+
+//           <div className="about-text">
+//             <h2>About Me</h2>
+//             <p>I'm a passionate software developer...</p>
+//             {/* ... rest of your text ... */}
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default About;
